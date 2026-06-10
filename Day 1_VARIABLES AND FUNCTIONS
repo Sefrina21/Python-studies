@@ -1,0 +1,62 @@
+Variables and Functions
+
+1. Variables
+- A variable is a named storage location used to hold data.
+- It allows information to be stored and reused in a program.
+- Variables can store different types of data such as text, numbers, and Boolean values.
+
+Syntax:
+variable_name = value
+
+Example:
+name = "Winzy"
+city = "Thoothukudi"
+is_submitted = False
+
+Features of Variables:
+- Store data temporarily.
+- Values can be changed during program execution.
+- Multiple variables can be created in a single line.
+
+Example:
+name, city, issue = "Winzy", "Thoothukudi", "damaged roads"
+
+2. Functions
+- A function is a reusable block of code designed to perform a specific task.
+- It helps reduce code repetition and improves readability.
+
+Syntax:
+def function_name():
+    # code
+
+Example:
+def show_welcome():
+    print("Welcome to PublicVoice!")
+
+Calling a Function:
+show_welcome()
+
+3. Functions with Parameters
+- Parameters allow data to be passed into a function.
+
+Example:
+def show_report(name, location, issue):
+    print(name, location, issue)
+
+Function Call:
+show_report("Winzy", "Thoothukudi", "Damaged roads")
+
+4. Default Parameters
+- A default value is used if no argument is provided.
+
+Example:
+def show_report(name, issue="Unknown Issue"):
+    print(name, issue)
+
+5. Return Statement
+- The return statement sends a value back from a function.
+
+Example:
+def add(a, b):
+    return a + b
+
