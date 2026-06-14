@@ -3,7 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Create Database
+# Create database and table
 def init_db():
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
@@ -11,7 +11,7 @@ def init_db():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS students(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
+        name TEXT,
         age INTEGER,
         email TEXT,
         course TEXT,
@@ -53,8 +53,7 @@ def add_student():
     INSERT INTO students
     (name, age, email, course, marks, status)
     VALUES (?, ?, ?, ?, ?, ?)
-    """,
-    (name, age, email, course, marks, status))
+    """, (name, age, email, course, marks, status))
 
     conn.commit()
     conn.close()
@@ -93,30 +92,6 @@ def delete_student(id):
     conn.close()
 
     return redirect("/students")
-
-
-# Search Student
-@app.route("/search", methods=["POST"])
-def search():
-
-    keyword = request.form["keyword"]
-
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT * FROM students WHERE name LIKE ?",
-        ('%' + keyword + '%',)
-    )
-
-    data = cursor.fetchall()
-
-    conn.close()
-
-    return render_template(
-        "students.html",
-        students=data
-    )
 
 
 if __name__ == "__main__":
